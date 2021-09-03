@@ -14,9 +14,9 @@ def saveFile(fileName, action, dataType, data):
             writer.writerow(data)
         elif dataType == "body":
             print("Appending Data Rows")
-            writer.writerow(data[0])
-            writer.writerow(data[1])
-            writer.writerow(data[2])
+            writer.writerows(data)
+            # writer.writerow(data[1])
+            # writer.writerow(data[2])
             writer.writerow([""])
 
 def get_date():
@@ -57,7 +57,7 @@ def get_gold_price():
                 np1[0][i] = yesterday
         # print(np1)
         np1=np1.T
-        # print(np1)
+        print(np1[1:])
         if len(np_head)==0:
             np_head=np1[0]
             saveFile("newCSV.csv", 'w',"head", np_head)
